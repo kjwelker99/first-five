@@ -1,4 +1,4 @@
-html = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -305,7 +305,7 @@ html = '''<!DOCTYPE html>
     Elena
   </h1>
   <div class="tagline">Five Years Together</div>
-  <div class="date-badge">May 18, 2021 — May 18, 2026</div>
+  <div class="date-badge">May 18, 2021 &#8212; May 18, 2026</div>
   <button class="enter-btn" onclick="enterSite()">My Top 5 of Each 5</button>
 </div>
 
@@ -314,7 +314,7 @@ html = '''<!DOCTYPE html>
     <button class="home-btn" onclick="goHome()" title="Back to start">K &amp; E</button>
   </nav>
   <div class="slide-area" id="slideArea"></div>
-  <div class="footer">Made with love — Kurtis</div>
+  <div class="footer">Made with love &#8212; Kurtis</div>
 </div>
 
 <div class="modal-bg" id="modal" onclick="closeModal(event)">
@@ -451,7 +451,8 @@ function goHome() {
 
 function render() {
   var pills = document.querySelectorAll(".yr-pill");
-  for (var i = 0; i < pills.length; i++) {
+  var i;
+  for (i = 0; i < pills.length; i++) {
     if (i === current) { pills[i].classList.add("active"); }
     else { pills[i].classList.remove("active"); }
   }
@@ -462,14 +463,12 @@ function render() {
   slideArea.style.animation = "fadeUp .45s ease both";
 
   if (current >= YEARS.length) {
-    for (var i = 0; i < pills.length; i++) { pills[i].classList.remove("active"); }
-    slideArea.innerHTML =
-      '<div class="closing">' +
-        '<div class="closing-line"></div>' +
-        '<h2>I love you.<br>Looking forward to the next 5 too.</h2>' +
-        '<div class="sig">— Kurtis</div>' +
-      '</div>' +
-      buildNav2(true);
+    for (i = 0; i < pills.length; i++) { pills[i].classList.remove("active"); }
+    slideArea.innerHTML = '<div class="closing">' +
+      '<div class="closing-line"></div>' +
+      '<h2>I love you.<br>Looking forward to the next 5 too.</h2>' +
+      '<div class="sig">&#8212; Kurtis</div>' +
+      '</div>' + buildNavHTML(true);
     attachNavEvents();
     return;
   }
@@ -479,43 +478,47 @@ function render() {
     '<div class="year-title">' + yr.label + '</div>' +
     '<div class="year-sub">' + yr.subtitle + '</div></div>';
 
-  h += '<div class="hero-wrap" data-src="' + yr.anniversary.src + '" data-title="' + yr.anniversary.title + '" data-desc="' + yr.anniversary.desc + '">' +
-    '<img src="' + yr.anniversary.src + '" alt="' + yr.anniversary.title + '" loading="lazy">' +
+  h += '<div class="hero-wrap" data-src="' + yr.anniversary.src +
+    '" data-title="' + yr.anniversary.title +
+    '" data-desc="' + yr.anniversary.desc + '">' +
+    '<img src="' + yr.anniversary.src + '" alt="' + yr.anniversary.title + '">' +
     '<div class="hero-badge">' + yr.anniversary.title + '</div></div>';
 
   h += '<div class="strip">';
   for (var j = 0; j < yr.photos.length; j++) {
     var p = yr.photos[j];
-    h += '<div class="strip-card" data-src="' + p.src + '" data-title="' + p.title + '" data-desc="' + p.desc + '">' +
-      '<img src="' + p.src + '" alt="' + p.title + '" loading="lazy">' +
+    h += '<div class="strip-card" data-src="' + p.src +
+      '" data-title="' + p.title +
+      '" data-desc="' + p.desc + '">' +
+      '<img src="' + p.src + '" alt="' + p.title + '">' +
       '<div class="strip-num">' + (j + 1) + '</div></div>';
   }
   h += '</div>';
-  h += '<div class="scroll-hint">swipe to see more →</div>';
-  h += buildNav2(false);
+  h += '<div class="scroll-hint">swipe to see more &#8594;</div>';
+  h += buildNavHTML(false);
 
   slideArea.innerHTML = h;
   attachNavEvents();
   attachPhotoEvents();
 }
 
-function buildNav2(isLast) {
+function buildNavHTML(isLast) {
   var dots = "";
   for (var i = 0; i < TOTAL_SLIDES; i++) {
-    dots += '<div class="dot' + (i === current ? ' active' : '') + '"></div>';
+    dots += '<div class="dot' + (i === current ? " active" : "") + '"></div>';
   }
   return '<div class="slide-nav">' +
-    '<button class="nav-arrow" id="prevBtn"' + (current === 0 ? ' disabled' : '') + '>&#8592;</button>' +
+    '<button class="nav-arrow" id="prevBtn"' + (current === 0 ? " disabled" : "") + '>&#8592;</button>' +
     '<div class="nav-dots">' + dots + '</div>' +
-    '<button class="nav-arrow" id="nextBtn"' + (isLast ? ' disabled' : '') + '>&#8594;</button>' +
+    '<button class="nav-arrow" id="nextBtn"' + (isLast ? " disabled" : "") + '>&#8594;</button>' +
     '</div>';
 }
 
 function attachNavEvents() {
   var prev = document.getElementById("prevBtn");
   var next = document.getElementById("nextBtn");
-  if (prev) prev.addEventListener("click", function() { goTo(current - 1); });
-  if (next) next.addEventListener("click", function() { goTo(current + 1); });
+  if (prev) { prev.addEventListener("click", function() { goTo(current - 1); }); }
+  if (next) { next.addEventListener("click", function() { goTo(current + 1); }); }
 }
 
 function attachPhotoEvents() {
@@ -546,10 +549,10 @@ function closeModal(e) {
 }
 
 document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") closeModal();
+  if (e.key === "Escape") { closeModal(); }
   if (modal.classList.contains("open")) return;
-  if (e.key === "ArrowRight") goTo(current + 1);
-  if (e.key === "ArrowLeft") goTo(current - 1);
+  if (e.key === "ArrowRight") { goTo(current + 1); }
+  if (e.key === "ArrowLeft") { goTo(current - 1); }
 });
 
 var touchStartX = 0;
@@ -559,8 +562,8 @@ document.addEventListener("touchstart", function(e) {
 document.addEventListener("touchend", function(e) {
   if (modal.classList.contains("open")) return;
   var dx = e.changedTouches[0].screenX - touchStartX;
-  if (dx < -60) goTo(current + 1);
-  else if (dx > 60) goTo(current - 1);
+  if (dx < -60) { goTo(current + 1); }
+  else if (dx > 60) { goTo(current - 1); }
 }, { passive: true });
 
 function enterSite() {
@@ -571,16 +574,4 @@ function enterSite() {
 }
 </script>
 </body>
-</html>'''
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html)
-
-print("✅ Clean index.html created")
-print(f"   File size: {len(html):,} chars")
-print()
-print("Changes from previous version:")
-print("  • Rewrote all JS using var + traditional functions (no arrow functions)")
-print("  • Eliminated template literals (backticks) — uses string concatenation")
-print("  • Removed placeholder system entirely — photos load directly")
-print("  • Zero syntax risk from special characters")
+</html>
