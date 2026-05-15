@@ -452,7 +452,7 @@ const YEARS = [
    ═══════════════════════════════════════════════════════ */
 const TOTAL_SLIDES = YEARS.length + 1;
 let current = 0;
-const USE_PLACEHOLDERS = false:  // ← set to false once you add real photos
+const USE_PLACEHOLDERS = false;  // ← set to false once you add real photos
 
 const topBar    = document.getElementById('topBar');
 const slideArea = document.getElementById('slideArea');
@@ -521,7 +521,7 @@ function render() {
     const next = document.createElement('button');
     next.className = 'nav-arrow';
     next.innerHTML = '&#8594;';
-    next.disabled = false:
+    next.disabled = false;
 
     nav.append(prev, dots, next);
     slideArea.appendChild(nav);
