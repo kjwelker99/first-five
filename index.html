@@ -71,11 +71,15 @@
   .strip::-webkit-scrollbar{display:none;}
 
   .strip-card{flex:0 0 130px;aspect-ratio:3/4;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;scroll-snap-align:center;
-    box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .3s ease,box-shadow .3s ease;background:#fff;
-    will-change:transform; transform:translateZ(0);
+    box-shadow:0 3px 14px rgba(0,0,0,.07);background:#fff;
+    will-change:transform;
+    transform:translateZ(0);
+    transition:transform .35s cubic-bezier(.25,.1,.25,1), box-shadow .35s ease;
   }
   .strip-card:hover{transform:translateY(-3px);}
-  .strip-card img{width:100%;height:100%;object-fit:cover;display:block;background:#fff;}
+  .strip-card img{width:100%;height:100%;object-fit:cover;display:block;background:#fff;
+    transition:object-fit 0s .05s;
+  }
   .strip-num{position:absolute;bottom:.45rem;right:.5rem;font-size:.55rem;font-weight:500;color:rgba(255,255,255,.85);background:rgba(0,0,0,.25);
     padding:.15rem .45rem;border-radius:20px;}
 
@@ -114,7 +118,7 @@
 
   .footer{text-align:center;padding:1.4rem;font-size:.65rem;color:var(--muted);letter-spacing:.08rem;}
 
-  /* MOBILE enhancements */
+  /* ==================== MOBILE ==================== */
   @media(max-width:600px){
     .yr-pill{font-size:.6rem;padding:.4rem .8rem;}
     .hero-wrap{max-width:280px;}
@@ -122,7 +126,6 @@
     .scroll-hint{display:block;}
     .home-btn{position:static;margin-right:.5rem;}
 
-    /* Prevent native horizontal scrolling (swipe drives focus), but allow vertical overflow for scale */
     .strip{
       overflow-x:hidden;
       overflow-y:visible;
@@ -134,13 +137,21 @@
       will-change:scroll-position;
     }
 
-    /* Focused card: 25% bigger, no shadow, no cropping */
+    /* Smooth scale transition for all cards (the "dial" feel) */
+    .strip-card{
+      transition:transform .4s cubic-bezier(.22,.68,0,1.0), box-shadow .4s ease;
+    }
+
+    /* Focused: 25% bigger, no shadow, no cropping */
     .strip-card.focused{
       transform:translateZ(0) scale(1.25);
       box-shadow:none;
       z-index:10;
     }
-    .strip-card.focused img{object-fit:contain;background:#111;}
+    .strip-card.focused img{
+      object-fit:contain;
+      background:#111;
+    }
   }
 
   @media(min-width:601px){
@@ -179,9 +190,6 @@
 <button class="modal-x" id="modalX" onclick="closeModal()">&#x2715;</button>
 
 <script>
-// ========================
-// DATA
-// ========================
 var YEARS = [
   {
     year: 1,
@@ -190,13 +198,13 @@ var YEARS = [
     anniversary: {
       src: "year1/anniversary.jpeg",
       title: "May 18, 2021",
-      desc: "I have so many fond memories of this day, though it is all a bit of a blur. I do distinctly remember that you looked beautiful. I can't believe it was five years ago!"
+      desc: "I have so many fond memories of this day, though it is all a bit of a blur. I do distinctly remember that you looked beautiful. I can\u2019t believe it was five years ago!"
     },
     photos: [
-      { src: "year1/01.jpeg", title: "Fancy Dinner in Sedona", desc: "Still one of the best meals I've ever had. Little did we know, this would probably be our fanciest dinner for five years." },
+      { src: "year1/01.jpeg", title: "Fancy Dinner in Sedona", desc: "Still one of the best meals I\u2019ve ever had. Little did we know, this would probably be our fanciest dinner for five years." },
       { src: "year1/02.jpeg", title: "The Heart Chip", desc: "This was a fun campout (except the sliding down the mountain as we were sleeping). I remember the beautiful view and the yummy breakfast you made me." },
-      { src: "year1/03.jpeg", title: "Six-Month Anniversary", desc: "This felt like a big deal at the time..." },
-      { src: "year1/04.jpeg", title: "First Christmas Together", desc: "Baby shark doo doo..." },
+      { src: "year1/03.jpeg", title: "Six-Month Anniversary", desc: "This felt like a big deal at the time\u2026" },
+      { src: "year1/04.jpeg", title: "First Christmas Together", desc: "Baby shark doo doo\u2026" },
       { src: "year1/05.jpeg", title: "Date Night Show", desc: "What a fun night. I really enjoyed going out with you." }
     ]
   },
@@ -207,14 +215,14 @@ var YEARS = [
     anniversary: {
       src: "year2/anniversary.jpeg",
       title: "May 18, 2022",
-      desc: "This is the only picture I have from this date. I'm sure we did something fun, but I'm not sure what it was."
+      desc: "This is the only picture I have from this date. I\u2019m sure we did something fun, but I\u2019m not sure what it was."
     },
     photos: [
-      { src: "year2/01.jpeg", title: "It's a Girl!", desc: "Squirt gun gender reveal courtesy of Audra. Lets not forget who guessed correctly." },
+      { src: "year2/01.jpeg", title: "It\u2019s a Girl!", desc: "Squirt gun gender reveal courtesy of Audra. Lets not forget who guessed correctly." },
       { src: "year2/02.jpeg", title: "Toasted Lena", desc: "At the Kartchner reunion. Everyone got burnt at the lake in Alpine. Your legs looked so bad!" },
       { src: "year2/03.jpeg", title: "Rise and Shout", desc: "BYU vs Utah State football game. The Cougs won and it was a fun time." },
-      { src: "year2/04.jpeg", title: "At the Hospital", desc: "December 11, 2022, what a day. Remember me staying for the linger longer? This was the one moment where you actually got to take a small break. There haven't been many since then either." },
-      { src: "year2/05.jpeg", title: "Snow Angel", desc: "Those couple weeks after Marlie was born was a trial. Yet somehow we survived the finals, snow, ER visit, and even the sleep depravation (barely)." }
+      { src: "year2/04.jpeg", title: "At the Hospital", desc: "December 11, 2022, what a day. Remember me staying for the linger longer? This was the one moment where you actually got to take a small break. There haven\u2019t been many since then either." },
+      { src: "year2/05.jpeg", title: "Snow Angel", desc: "Those couple weeks after Marlie was born was a trial. Yet somehow we survived the finals, snow, ER visit, and even the sleep deprivation (barely)." }
     ]
   },
   {
@@ -228,9 +236,9 @@ var YEARS = [
     },
     photos: [
       { src: "year3/01.jpeg", title: "Leaving for Moline", desc: "Starting off our epic car drive to Moline for my internship. Remember the Wyoming Mexican food and the massive downpour?" },
-      { src: "year3/02.jpeg", title: "First Father's Day", desc: "This year was full of firsts for us." },
-      { src: "year3/03.jpeg", title: "Maquoketa Caves", desc: "This was a fun adventure. I loved the cool dampness of the caves. However, I was constantly worried about hitting Marlie's head against a rock." },
-      { src: "year3/04.jpeg", title: "Marlie's First Birthday", desc: "Complete with an epic, healthy smash cake. And a yummy cake for the adults." },
+      { src: "year3/02.jpeg", title: "First Father\u2019s Day", desc: "This year was full of firsts for us." },
+      { src: "year3/03.jpeg", title: "Maquoketa Caves", desc: "This was a fun adventure. I loved the cool dampness of the caves. However, I was constantly worried about hitting Marlie\u2019s head against a rock." },
+      { src: "year3/04.jpeg", title: "Marlie\u2019s First Birthday", desc: "Complete with an epic, healthy smash cake. And a yummy cake for the adults." },
       { src: "year3/05.jpeg", title: "Brunch at Locals", desc: "I miss this place so much." }
     ]
   },
@@ -245,7 +253,7 @@ var YEARS = [
     },
     photos: [
       { src: "year4/01.jpeg", title: "Air Mattress Nights", desc: "Moving into Kimberly and not having furniture for multiple days was an adventure." },
-      { src: "year4/02.jpeg", title: "Eye Rocks", desc: "You had such a fun idea to pick rocks to match each other's eyes. I think we did a pretty good job." },
+      { src: "year4/02.jpeg", title: "Eye Rocks", desc: "You had such a fun idea to pick rocks to match each other\u2019s eyes. I think we did a pretty good job." },
       { src: "year4/03.jpeg", title: "Car Adventures", desc: "We had a few car adventures this year. Some were more successful than others. This one worked!" },
       { src: "year4/04.jpeg", title: "Reunited Again", desc: "Flying back to me after being gone for a long time to help your family. These were hard times. You were where you needed to be, but I sure missed you. I think you gave a friendlier face than the one Marlie gave, right?" },
       { src: "year4/05.jpeg", title: "Calm Before the Storm", desc: "The only picture I have from May 17 before Weston was born. I think you were skeptical of that lasagna, but it came in handy!" }
@@ -262,7 +270,7 @@ var YEARS = [
     },
     photos: [
       { src: "year5/01.jpeg", title: "Baby Brother", desc: "We are so lucky to have two sweet kids who love each other. What sweet times we had just cooing at Weston." },
-      { src: "year5/02.jpeg", title: "Weston's Baby Blessing", desc: "Becoming a family of four." },
+      { src: "year5/02.jpeg", title: "Weston\u2019s Baby Blessing", desc: "Becoming a family of four." },
       { src: "year5/03.jpeg", title: "Hiking at Sunderbruch", desc: "We had so many fun hikes this year, with only one tick and a few tears." },
       { src: "year5/04.jpeg", title: "The Raisin", desc: "Honestly, what a story." },
       { src: "year5/05.jpeg", title: "Thanksgiving Feast", desc: "Hosting our first Thanksgiving. You did such a good job. That turkey was so delicious." }
@@ -272,27 +280,22 @@ var YEARS = [
 
 var TOTAL_SLIDES = YEARS.length + 1;
 var current = 0;
-var focusedIdx = 0; // 0 = none, 1..5 = which photo is focused
+var focusedIdx = 0;
 
 var topBar = document.getElementById("topBar");
 var slideArea = document.getElementById("slideArea");
 var modal = document.getElementById("modal");
 var modalX = document.getElementById("modalX");
 
-// ========================
-// Helpers
-// ========================
 function escAttr(s) {
-  s = String(s);
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/\"/g, "&quot;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  return String(s).replace(/&/g,"&amp;").replace(/\"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
-// Cancelable smooth scroller (smoother feel on iOS)
+/* ===========================
+   Ultra-smooth scroll engine
+   =========================== */
 var scrollAnimId = null;
+
 function smoothScrollTo(el, target, dur) {
   if (!el) return;
   if (scrollAnimId) cancelAnimationFrame(scrollAnimId);
@@ -302,13 +305,14 @@ function smoothScrollTo(el, target, dur) {
   if (Math.abs(diff) < 1) return;
 
   var t0 = null;
-  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  // Custom spring-like ease: fast start, gentle settle (combination-lock feel)
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
 
   function step(ts) {
     if (!t0) t0 = ts;
     var p = Math.min((ts - t0) / dur, 1);
-    var eased = easeOutCubic(p);
-    el.scrollLeft = start + diff * eased;
+    el.scrollLeft = start + diff * easeOutQuart(p);
     if (p < 1) scrollAnimId = requestAnimationFrame(step);
     else scrollAnimId = null;
   }
@@ -326,18 +330,20 @@ function updateFocus() {
     cards[idx].classList.add("focused");
 
     if (strip && window.innerWidth <= 600) {
-      var targetLeft = cards[idx].offsetLeft - (strip.offsetWidth / 2) + (cards[idx].offsetWidth / 2);
+      var cardW = cards[idx].offsetWidth;
+      var stripW = strip.offsetWidth;
+      var targetLeft = cards[idx].offsetLeft - (stripW / 2) + (cardW / 2);
       if (targetLeft < 0) targetLeft = 0;
-      smoothScrollTo(strip, targetLeft, 340);
+      smoothScrollTo(strip, targetLeft, 420);
     }
   } else if (strip && window.innerWidth <= 600) {
-    smoothScrollTo(strip, 0, 340);
+    smoothScrollTo(strip, 0, 420);
   }
 }
 
-// ========================
-// Render
-// ========================
+/* ===========================
+   Nav + Render
+   =========================== */
 function buildNav() {
   for (var i = 0; i < YEARS.length; i++) {
     var btn = document.createElement("button");
@@ -378,7 +384,6 @@ function render() {
   // Closing slide
   if (current >= YEARS.length) {
     for (var k = 0; k < pills.length; k++) pills[k].classList.remove("active");
-
     slideArea.innerHTML =
       '<div class="closing">' +
         '<div class="closing-line"></div>' +
@@ -386,7 +391,6 @@ function render() {
         '<div class="sig">&#8212; Kurtis</div>' +
       '</div>' +
       buildNavHTML(true);
-
     attachNavEvents();
     return;
   }
@@ -394,29 +398,25 @@ function render() {
   var yr = YEARS[current];
 
   var h = '<div style="text-align:center">' +
-            '<div class="year-title">' + yr.label + '</div>' +
-            '<div class="year-sub">' + yr.subtitle + '</div>' +
-          '</div>';
+    '<div class="year-title">' + yr.label + '</div>' +
+    '<div class="year-sub">' + yr.subtitle + '</div></div>';
 
   h += '<div class="hero-wrap" data-src="' + yr.anniversary.src +
-      '" data-title="' + escAttr(yr.anniversary.title) +
-      '" data-desc="' + escAttr(yr.anniversary.desc) + '">' +
-      '<img src="' + yr.anniversary.src + '" alt="' + escAttr(yr.anniversary.title) + '">' +
-      '<div class="hero-badge">' + yr.anniversary.title + '</div>' +
-    '</div>';
+    '" data-title="' + escAttr(yr.anniversary.title) +
+    '" data-desc="' + escAttr(yr.anniversary.desc) + '">' +
+    '<img src="' + yr.anniversary.src + '" alt="' + escAttr(yr.anniversary.title) + '">' +
+    '<div class="hero-badge">' + yr.anniversary.title + '</div></div>';
 
   h += '<div class="strip">';
   for (var j = 0; j < yr.photos.length; j++) {
     var p = yr.photos[j];
-    h += '<div class="strip-card" data-src="' + p.src +
-        '" data-title="' + escAttr(p.title) +
-        '" data-desc="' + escAttr(p.desc) + '">' +
-        '<img src="' + p.src + '" alt="' + escAttr(p.title) + '">' +
-        '<div class="strip-num">' + (j + 1) + '</div>' +
-      '</div>';
+    h += '<div class="strip-card" data-idx="' + (j + 1) + '" data-src="' + p.src +
+      '" data-title="' + escAttr(p.title) +
+      '" data-desc="' + escAttr(p.desc) + '">' +
+      '<img src="' + p.src + '" alt="' + escAttr(p.title) + '">' +
+      '<div class="strip-num">' + (j + 1) + '</div></div>';
   }
   h += '</div>';
-
   h += '<div class="scroll-hint">swipe to see more &#8594;</div>';
   h += buildNavHTML(false);
 
@@ -434,8 +434,7 @@ function buildNavHTML(isLast) {
   return '<div class="slide-nav">' +
     '<button class="nav-arrow" id="prevBtn"' + (current === 0 ? " disabled" : "") + '>&#8592;</button>' +
     '<div class="nav-dots">' + dots + '</div>' +
-    '<button class="nav-arrow" id="nextBtn"' + (isLast ? " disabled" : "") + '>&#8594;</button>' +
-  '</div>';
+    '<button class="nav-arrow" id="nextBtn"' + (isLast ? " disabled" : "") + '>&#8594;</button></div>';
 }
 
 function attachNavEvents() {
@@ -446,17 +445,36 @@ function attachNavEvents() {
 }
 
 function attachPhotoEvents() {
-  var items = slideArea.querySelectorAll(".hero-wrap, .strip-card");
-  for (var i = 0; i < items.length; i++) {
-    items[i].addEventListener("click", function() {
+  // Hero: always opens modal on tap
+  var heroes = slideArea.querySelectorAll(".hero-wrap");
+  for (var h = 0; h < heroes.length; h++) {
+    heroes[h].addEventListener("click", function() {
       openModal(this.getAttribute("data-src"), this.getAttribute("data-title"), this.getAttribute("data-desc"));
+    });
+  }
+
+  // Strip cards: on mobile, first tap highlights; second tap (when already focused) opens modal
+  var cards = slideArea.querySelectorAll(".strip-card");
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", function() {
+      var cardIdx = parseInt(this.getAttribute("data-idx"), 10);
+      var mobile = window.innerWidth <= 600;
+
+      if (mobile && focusedIdx !== cardIdx) {
+        // First tap: highlight this photo
+        focusedIdx = cardIdx;
+        updateFocus();
+      } else {
+        // Already focused (or desktop): open modal
+        openModal(this.getAttribute("data-src"), this.getAttribute("data-title"), this.getAttribute("data-desc"));
+      }
     });
   }
 }
 
-// ========================
-// Modal
-// ========================
+/* ===========================
+   Modal
+   =========================== */
 function openModal(src, title, desc) {
   document.getElementById("modalImgReal").src = src;
   document.getElementById("modalTitle").textContent = title;
@@ -471,9 +489,9 @@ function closeModal(e) {
   document.body.style.overflow = "";
 }
 
-// ========================
-// Input
-// ========================
+/* ===========================
+   Input handling
+   =========================== */
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") closeModal();
   if (modal.classList.contains("open")) return;
@@ -495,13 +513,10 @@ document.addEventListener("touchend", function(e) {
   var dy = e.changedTouches[0].screenY - touchStartY;
   var adx = Math.abs(dx);
   var ady = Math.abs(dy);
-
-  // Only treat as horizontal swipe when it's clearly horizontal
   if (adx < 60 || ady > adx) return;
 
   var mobile = window.innerWidth <= 600;
 
-  // Mobile: swipe advances focus through photos, then years
   if (mobile && current < YEARS.length) {
     if (dx < 0) {
       if (focusedIdx < 5) { focusedIdx++; updateFocus(); }
@@ -513,15 +528,14 @@ document.addEventListener("touchend", function(e) {
   } else if (mobile && current >= YEARS.length) {
     if (dx > 0) { focusedIdx = 5; goTo(current - 1); }
   } else {
-    // Desktop/tablet: swipe changes year
     if (dx < 0) { focusedIdx = 0; goTo(current + 1); }
     else { focusedIdx = 0; goTo(current - 1); }
   }
 }, { passive: true });
 
-// ========================
-// Start
-// ========================
+/* ===========================
+   Start
+   =========================== */
 function enterSite() {
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("app").classList.add("visible");
