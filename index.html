@@ -16,23 +16,28 @@
   html{-webkit-tap-highlight-color:transparent;}
   body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100dvh;}
 
-  #intro{position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);transition:opacity .9s cubic-bezier(.4,0,.2,1),visibility .9s;}
+  #intro{position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);
+    transition:opacity .9s cubic-bezier(.4,0,.2,1),visibility .9s;}
   #intro.hidden{opacity:0;visibility:hidden;pointer-events:none;}
   .intro-line{width:48px;height:1px;background:var(--muted);margin-bottom:2rem;}
   #intro h1{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2rem,6vw,3.6rem);text-align:center;line-height:1.25;letter-spacing:-.02em;}
   #intro h1 .amp{display:block;font-style:italic;font-size:.5em;color:var(--accent);margin:.3rem 0;}
   #intro .tagline{margin-top:1.4rem;font-weight:300;font-size:.85rem;letter-spacing:.22rem;text-transform:uppercase;color:var(--muted);}
   #intro .date-badge{margin-top:.6rem;font-weight:300;font-size:.75rem;color:var(--accent-lt);letter-spacing:.1rem;}
-  .enter-btn{margin-top:3rem;padding:.75rem 2.6rem;border:1px solid var(--border);border-radius:50px;background:var(--surface);color:var(--text);font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.18rem;text-transform:uppercase;cursor:pointer;transition:all .3s ease;}
+  .enter-btn{margin-top:3rem;padding:.75rem 2.6rem;border:1px solid var(--border);border-radius:50px;background:var(--surface);color:var(--text);
+    font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.18rem;text-transform:uppercase;cursor:pointer;transition:all .3s ease;}
   .enter-btn:hover{border-color:var(--accent);color:var(--accent);}
 
   #app{display:none;flex-direction:column;min-height:100dvh;}
   #app.visible{display:flex;}
 
-  .top-bar{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:1rem;border-bottom:1px solid var(--border);background:rgba(247,247,245,.85);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200;}
-  .home-btn{position:absolute;left:1rem;font-family:'Playfair Display',serif;font-size:.85rem;font-weight:300;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .25s ease;letter-spacing:.02em;}
+  .top-bar{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:1rem;border-bottom:1px solid var(--border);
+    background:rgba(247,247,245,.85);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200;}
+  .home-btn{position:absolute;left:1rem;font-family:'Playfair Display',serif;font-size:.85rem;font-weight:300;color:var(--muted);cursor:pointer;background:none;border:none;
+    transition:color .25s ease;letter-spacing:.02em;}
   .home-btn:hover{color:var(--accent);}
-  .yr-pill{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;letter-spacing:.1rem;text-transform:uppercase;padding:.5rem 1.15rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--subtle);cursor:pointer;transition:all .25s ease;}
+  .yr-pill{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;letter-spacing:.1rem;text-transform:uppercase;padding:.5rem 1.15rem;border-radius:50px;
+    border:1px solid var(--border);background:transparent;color:var(--subtle);cursor:pointer;transition:all .25s ease;}
   .yr-pill:hover{border-color:var(--accent);color:var(--accent);}
   .yr-pill.active{background:var(--text);border-color:var(--text);color:#fff;}
 
@@ -42,22 +47,27 @@
   .year-title{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:.25rem;}
   .year-sub{font-size:.75rem;color:var(--muted);letter-spacing:.12rem;margin-bottom:2rem;font-style:italic;}
 
-  .hero-wrap{width:100%;max-width:380px;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;cursor:pointer;position:relative;box-shadow:0 6px 28px rgba(0,0,0,.08);margin-bottom:1.6rem;transition:transform .35s ease;}
+  .hero-wrap{width:100%;max-width:380px;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;cursor:pointer;position:relative;
+    box-shadow:0 6px 28px rgba(0,0,0,.08);margin-bottom:1.6rem;transition:transform .35s ease;}
   .hero-wrap:hover{transform:scale(1.015);}
   .hero-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
-  .hero-badge{position:absolute;bottom:0;left:0;right:0;padding:2.4rem 1rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.4));color:#fff;text-align:center;font-size:.72rem;letter-spacing:.14rem;font-weight:400;}
+  .hero-badge{position:absolute;bottom:0;left:0;right:0;padding:2.4rem 1rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.4));
+    color:#fff;text-align:center;font-size:.72rem;letter-spacing:.14rem;font-weight:400;}
 
   .strip{display:flex;gap:.65rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 1rem .5rem;max-width:800px;width:100%;scrollbar-width:none;}
   .strip::-webkit-scrollbar{display:none;}
-  .strip-card{flex:0 0 130px;aspect-ratio:3/4;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;scroll-snap-align:center;box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .3s ease,box-shadow .3s ease;}
+  .strip-card{flex:0 0 130px;aspect-ratio:3/4;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;scroll-snap-align:center;
+    box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .3s ease,box-shadow .3s ease; background: #fff;}
   .strip-card:hover{transform:translateY(-3px);}
-  .strip-card img{width:100%;height:100%;object-fit:cover;display:block;}
-  .strip-num{position:absolute;bottom:.45rem;right:.5rem;font-size:.55rem;font-weight:500;color:rgba(255,255,255,.85);background:rgba(0,0,0,.25);padding:.15rem .45rem;border-radius:20px;}
+  .strip-card img{width:100%;height:100%;object-fit:cover;display:block; background:#fff;}
+  .strip-num{position:absolute;bottom:.45rem;right:.5rem;font-size:.55rem;font-weight:500;color:rgba(255,255,255,.85);background:rgba(0,0,0,.25);
+    padding:.15rem .45rem;border-radius:20px;}
 
   .scroll-hint{font-size:.65rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08rem;display:none;}
 
   .slide-nav{display:flex;gap:1rem;margin-top:2rem;align-items:center;}
-  .nav-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--subtle);transition:all .25s ease;}
+  .nav-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:1.1rem;color:var(--subtle);transition:all .25s ease;}
   .nav-arrow:hover{border-color:var(--accent);color:var(--accent);}
   .nav-arrow:disabled{opacity:.25;cursor:default;}
   .nav-dots{display:flex;gap:.4rem;}
@@ -69,28 +79,38 @@
   .closing h2{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(1.6rem,5vw,2.6rem);line-height:1.5;color:var(--text);}
   .closing .sig{margin-top:1.8rem;font-size:.85rem;font-weight:300;color:var(--accent);letter-spacing:.08rem;}
 
-  .modal-bg{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;}
+  .modal-bg{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;
+    transition:opacity .3s ease,visibility .3s ease;}
   .modal-bg.open{opacity:1;visibility:visible;}
-  .modal-card{background:var(--surface);border-radius:12px;max-width:440px;width:100%;max-height:90dvh;overflow-y:auto;transform:translateY(16px) scale(.97);transition:transform .35s ease;}
+  .modal-card{background:var(--surface);border-radius:12px;max-width:440px;width:100%;max-height:90dvh;overflow-y:auto;transform:translateY(16px) scale(.97);
+    transition:transform .35s ease;}
   .modal-bg.open .modal-card{transform:translateY(0) scale(1);}
-  .modal-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:12px 12px 0 0;}
+  .modal-card img{width:100%;aspect-ratio:3/4;object-fit:contain;display:block;border-radius:12px 12px 0 0;background:#111;}
   .modal-body{padding:1.4rem 1.6rem 1.6rem;}
   .modal-body h3{font-family:'Playfair Display',serif;font-weight:400;font-size:1.15rem;margin-bottom:.45rem;}
   .modal-body p{font-weight:300;font-size:.85rem;line-height:1.75;color:var(--subtle);}
-  .modal-x{position:fixed;top:.8rem;right:1rem;z-index:8100;width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:1.3rem;cursor:pointer;display:none;align-items:center;justify-content:center;}
+  .modal-x{position:fixed;top:.8rem;right:1rem;z-index:8100;width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:1.3rem;
+    cursor:pointer;display:none;align-items:center;justify-content:center;}
   .modal-bg.open ~ .modal-x{display:flex;}
 
   .footer{text-align:center;padding:1.4rem;font-size:.65rem;color:var(--muted);letter-spacing:.08rem;}
 
+  /* MOBILE: focus card gets ~20% bigger AND switches to "contain" to avoid cropping.
+     We also allow vertical overflow so the scaled card isn't clipped. */
   @media(max-width:600px){
     .yr-pill{font-size:.6rem;padding:.4rem .8rem;}
     .hero-wrap{max-width:280px;}
     .strip-card{flex:0 0 110px;}
     .scroll-hint{display:block;}
     .home-btn{position:static;margin-right:.5rem;}
-    .strip{overflow-x:hidden;padding-left:calc(50vw - 60px);padding-right:calc(50vw - 60px);}
-    .strip-card.focused{transform:scale(1.1) translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:10;}
+
+    /* Prevent the strip from horizontal scrolling (swipe controls focus), but allow vertical overflow */
+    .strip{overflow-x:hidden;overflow-y:visible;padding-left:calc(50vw - 60px);padding-right:calc(50vw - 60px);padding-top:14px;padding-bottom:18px;}
+
+    .strip-card.focused{transform:scale(1.2);box-shadow:0 10px 28px rgba(0,0,0,.22);z-index:10;}
+    .strip-card.focused img{object-fit:contain;background:#111;}
   }
+
   @media(min-width:601px){
     .strip{justify-content:center;overflow-x:visible;}
     .strip-card{flex:0 0 150px;}
@@ -132,11 +152,7 @@ var YEARS = [
     year: 1,
     label: "Year One",
     subtitle: "Honeymooning",
-    anniversary: {
-      src: "year1/anniversary.jpeg",
-      title: "May 18, 2021",
-      desc: "I have so many fond memories of this day, though it is all a bit of a blur. I do distinctly remember that you looked beautiful. I can't believe it was five years ago!"
-    },
+    anniversary: { src: "year1/anniversary.jpeg", title: "May 18, 2021", desc: "I have so many fond memories of this day, though it is all a bit of a blur. I do distinctly remember that you looked beautiful. I can't believe it was five years ago!" },
     photos: [
       { src: "year1/01.jpeg", title: "Fancy Dinner in Sedona", desc: "Still one of the best meals I've ever had. Little did we know, this would probably be our fanciest dinner for five years." },
       { src: "year1/02.jpeg", title: "The Heart Chip", desc: "This was a fun campout (except the sliding down the mountain as we were sleeping). I remember the beautiful view and the yummy breakfast you made me." },
@@ -149,11 +165,7 @@ var YEARS = [
     year: 2,
     label: "Year Two",
     subtitle: "Becoming Parents",
-    anniversary: {
-      src: "year2/anniversary.jpeg",
-      title: "May 18, 2022",
-      desc: "This is the only picture I have from this date. I'm sure we did something fun, but I'm not sure what it was."
-    },
+    anniversary: { src: "year2/anniversary.jpeg", title: "May 18, 2022", desc: "This is the only picture I have from this date. I'm sure we did something fun, but I'm not sure what it was." },
     photos: [
       { src: "year2/01.jpeg", title: "It's a Girl!", desc: "Squirt gun gender reveal courtesy of Audra. Lets not forget who guessed correctly." },
       { src: "year2/02.jpeg", title: "Toasted Lena", desc: "At the Kartchner reunion. Everyone got burnt at the lake in Alpine. Your legs looked so bad!" },
@@ -166,11 +178,7 @@ var YEARS = [
     year: 3,
     label: "Year Three",
     subtitle: "Adulting",
-    anniversary: {
-      src: "year3/anniversary.jpeg",
-      title: "May 18, 2023",
-      desc: "Good choice for anniversary dinner, Hun."
-    },
+    anniversary: { src: "year3/anniversary.jpeg", title: "May 18, 2023", desc: "Good choice for anniversary dinner, Hun." },
     photos: [
       { src: "year3/01.jpeg", title: "Leaving for Moline", desc: "Starting off our epic car drive to Moline for my internship. Remember the Wyoming Mexican food and the massive downpour?" },
       { src: "year3/02.jpeg", title: "First Father's Day", desc: "This year was full of firsts for us." },
@@ -183,11 +191,7 @@ var YEARS = [
     year: 4,
     label: "Year Four",
     subtitle: "Moving to the Midwest",
-    anniversary: {
-      src: "year4/anniversary.jpeg",
-      title: "May 18, 2024",
-      desc: "One of our last days in Provo. We took a walk to Bridal Veil Falls and Marlie picked us flowers. Little did we know how much of a trend that would be. Then, dinner at Chom."
-    },
+    anniversary: { src: "year4/anniversary.jpeg", title: "May 18, 2024", desc: "One of our last days in Provo. We took a walk to Bridal Veil Falls and Marlie picked us flowers. Little did we know how much of a trend that would be. Then, dinner at Chom." },
     photos: [
       { src: "year4/01.jpeg", title: "Air Mattress Nights", desc: "Moving into Kimberly and not having furniture for multiple days was an adventure." },
       { src: "year4/02.jpeg", title: "Eye Rocks", desc: "You had such a fun idea to pick rocks to match each other's eyes. I think we did a pretty good job." },
@@ -200,11 +204,7 @@ var YEARS = [
     year: 5,
     label: "Year Five",
     subtitle: "Just When We Thought We Had It, Add Another",
-    anniversary: {
-      src: "year5/anniversary.jpeg",
-      title: "May 18, 2025",
-      desc: "Enjoying our new baby Wes for our anniversary. This was certainly a unique one."
-    },
+    anniversary: { src: "year5/anniversary.jpeg", title: "May 18, 2025", desc: "Enjoying our new baby Wes for our anniversary. This was certainly a unique one." },
     photos: [
       { src: "year5/01.jpeg", title: "Baby Brother", desc: "We are so lucky to have two sweet kids who love each other. What sweet times we had just cooing at Weston." },
       { src: "year5/02.jpeg", title: "Weston's Baby Blessing", desc: "Becoming a family of four." },
@@ -217,7 +217,7 @@ var YEARS = [
 
 var TOTAL_SLIDES = YEARS.length + 1;
 var current = 0;
-var focusedIdx = 0;
+var focusedIdx = 0; // 0 = none, 1..5 = which photo is focused
 
 var topBar = document.getElementById("topBar");
 var slideArea = document.getElementById("slideArea");
@@ -225,7 +225,7 @@ var modal = document.getElementById("modal");
 var modalX = document.getElementById("modalX");
 
 function escAttr(s) {
-  return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+  return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
 }
 
 function buildNav() {
@@ -236,7 +236,7 @@ function buildNav() {
     btn.setAttribute("data-idx", i);
     btn.addEventListener("click", function() {
       focusedIdx = 0;
-      goTo(parseInt(this.getAttribute("data-idx")));
+      goTo(parseInt(this.getAttribute("data-idx"), 10));
     });
     topBar.appendChild(btn);
   }
@@ -271,27 +271,27 @@ function smoothScrollTo(el, target, dur) {
 function updateFocus() {
   var cards = slideArea.querySelectorAll(".strip-card");
   var strip = slideArea.querySelector(".strip");
-  var i;
-  for (i = 0; i < cards.length; i++) {
+  for (var i = 0; i < cards.length; i++) {
     cards[i].classList.remove("focused");
   }
+
   if (focusedIdx > 0 && focusedIdx <= cards.length) {
     var idx = focusedIdx - 1;
     cards[idx].classList.add("focused");
+
     if (strip && window.innerWidth <= 600) {
       var targetLeft = cards[idx].offsetLeft - (strip.offsetWidth / 2) + (cards[idx].offsetWidth / 2);
       if (targetLeft < 0) targetLeft = 0;
-      smoothScrollTo(strip, targetLeft, 280);
+      smoothScrollTo(strip, targetLeft, 240);
     }
   } else if (strip && window.innerWidth <= 600) {
-    smoothScrollTo(strip, 0, 280);
+    smoothScrollTo(strip, 0, 240);
   }
 }
 
 function render() {
   var pills = document.querySelectorAll(".yr-pill");
-  var i;
-  for (i = 0; i < pills.length; i++) {
+  for (var i = 0; i < pills.length; i++) {
     if (i === current) pills[i].classList.add("active");
     else pills[i].classList.remove("active");
   }
@@ -302,7 +302,7 @@ function render() {
   slideArea.style.animation = "fadeUp .45s ease both";
 
   if (current >= YEARS.length) {
-    for (i = 0; i < pills.length; i++) pills[i].classList.remove("active");
+    for (var k = 0; k < pills.length; k++) pills[k].classList.remove("active");
     slideArea.innerHTML = '<div class="closing">' +
       '<div class="closing-line"></div>' +
       '<h2>I love you.<br>Looking forward to the next 5 too.</h2>' +
@@ -313,8 +313,8 @@ function render() {
   }
 
   var yr = YEARS[current];
-  var h = '<div style="text-align:center"><div class="year-title">' +
-    yr.label + '</div><div class="year-sub">' + yr.subtitle + '</div></div>';
+  var h = '<div style="text-align:center"><div class="year-title">' + yr.label +
+    '</div><div class="year-sub">' + yr.subtitle + '</div></div>';
 
   h += '<div class="hero-wrap" data-src="' + yr.anniversary.src +
     '" data-title="' + escAttr(yr.anniversary.title) +
@@ -363,11 +363,7 @@ function attachPhotoEvents() {
   var items = slideArea.querySelectorAll(".hero-wrap, .strip-card");
   for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("click", function() {
-      openModal(
-        this.getAttribute("data-src"),
-        this.getAttribute("data-title"),
-        this.getAttribute("data-desc")
-      );
+      openModal(this.getAttribute("data-src"), this.getAttribute("data-title"), this.getAttribute("data-desc"));
     });
   }
 }
