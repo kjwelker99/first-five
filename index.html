@@ -8,14 +8,22 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap');
 
   :root {
-    --bg:#f7f7f5;--surface:#ffffff;--text:#2c2c2c;--subtle:#7a7a7a;
-    --muted:#b0aca6;--accent:#8c7b6b;--accent-lt:#c4b5a4;
-    --border:#e8e6e2;--radius:10px;
+    --bg:#f7f7f5;
+    --surface:#ffffff;
+    --text:#2c2c2c;
+    --subtle:#7a7a7a;
+    --muted:#b0aca6;
+    --accent:#8c7b6b;
+    --accent-lt:#c4b5a4;
+    --border:#e8e6e2;
+    --radius:10px;
   }
+
   *{margin:0;padding:0;box-sizing:border-box;}
   html{-webkit-tap-highlight-color:transparent;}
   body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100dvh;}
 
+  /* INTRO */
   #intro{position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);
     transition:opacity .9s cubic-bezier(.4,0,.2,1),visibility .9s;}
   #intro.hidden{opacity:0;visibility:hidden;pointer-events:none;}
@@ -28,14 +36,17 @@
     font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.18rem;text-transform:uppercase;cursor:pointer;transition:all .3s ease;}
   .enter-btn:hover{border-color:var(--accent);color:var(--accent);}
 
+  /* APP */
   #app{display:none;flex-direction:column;min-height:100dvh;}
   #app.visible{display:flex;}
 
   .top-bar{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:1rem;border-bottom:1px solid var(--border);
     background:rgba(247,247,245,.85);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200;}
+
   .home-btn{position:absolute;left:1rem;font-family:'Playfair Display',serif;font-size:.85rem;font-weight:300;color:var(--muted);cursor:pointer;background:none;border:none;
     transition:color .25s ease;letter-spacing:.02em;}
   .home-btn:hover{color:var(--accent);}
+
   .yr-pill{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;letter-spacing:.1rem;text-transform:uppercase;padding:.5rem 1.15rem;border-radius:50px;
     border:1px solid var(--border);background:transparent;color:var(--subtle);cursor:pointer;transition:all .25s ease;}
   .yr-pill:hover{border-color:var(--accent);color:var(--accent);}
@@ -47,6 +58,7 @@
   .year-title{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:.25rem;}
   .year-sub{font-size:.75rem;color:var(--muted);letter-spacing:.12rem;margin-bottom:2rem;font-style:italic;}
 
+  /* HERO */
   .hero-wrap{width:100%;max-width:380px;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;cursor:pointer;position:relative;
     box-shadow:0 6px 28px rgba(0,0,0,.08);margin-bottom:1.6rem;transition:transform .35s ease;}
   .hero-wrap:hover{transform:scale(1.015);}
@@ -54,17 +66,22 @@
   .hero-badge{position:absolute;bottom:0;left:0;right:0;padding:2.4rem 1rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.4));
     color:#fff;text-align:center;font-size:.72rem;letter-spacing:.14rem;font-weight:400;}
 
+  /* STRIP */
   .strip{display:flex;gap:.65rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 1rem .5rem;max-width:800px;width:100%;scrollbar-width:none;}
   .strip::-webkit-scrollbar{display:none;}
+
   .strip-card{flex:0 0 130px;aspect-ratio:3/4;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;scroll-snap-align:center;
-    box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .3s ease,box-shadow .3s ease; background: #fff;}
+    box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .3s ease,box-shadow .3s ease;background:#fff;
+    will-change:transform; transform:translateZ(0);
+  }
   .strip-card:hover{transform:translateY(-3px);}
-  .strip-card img{width:100%;height:100%;object-fit:cover;display:block; background:#fff;}
+  .strip-card img{width:100%;height:100%;object-fit:cover;display:block;background:#fff;}
   .strip-num{position:absolute;bottom:.45rem;right:.5rem;font-size:.55rem;font-weight:500;color:rgba(255,255,255,.85);background:rgba(0,0,0,.25);
     padding:.15rem .45rem;border-radius:20px;}
 
   .scroll-hint{font-size:.65rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08rem;display:none;}
 
+  /* NAV */
   .slide-nav{display:flex;gap:1rem;margin-top:2rem;align-items:center;}
   .nav-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;
     cursor:pointer;font-size:1.1rem;color:var(--subtle);transition:all .25s ease;}
@@ -74,11 +91,13 @@
   .dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all .3s ease;}
   .dot.active{background:var(--accent);width:18px;border-radius:4px;}
 
+  /* CLOSING */
   .closing{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;min-height:60dvh;text-align:center;}
   .closing-line{width:36px;height:1px;background:var(--muted);margin-bottom:2.5rem;}
   .closing h2{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(1.6rem,5vw,2.6rem);line-height:1.5;color:var(--text);}
   .closing .sig{margin-top:1.8rem;font-size:.85rem;font-weight:300;color:var(--accent);letter-spacing:.08rem;}
 
+  /* MODAL */
   .modal-bg{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;
     transition:opacity .3s ease,visibility .3s ease;}
   .modal-bg.open{opacity:1;visibility:visible;}
@@ -95,8 +114,7 @@
 
   .footer{text-align:center;padding:1.4rem;font-size:.65rem;color:var(--muted);letter-spacing:.08rem;}
 
-  /* MOBILE: focus card gets ~20% bigger AND switches to "contain" to avoid cropping.
-     We also allow vertical overflow so the scaled card isn't clipped. */
+  /* MOBILE enhancements */
   @media(max-width:600px){
     .yr-pill{font-size:.6rem;padding:.4rem .8rem;}
     .hero-wrap{max-width:280px;}
@@ -104,10 +122,24 @@
     .scroll-hint{display:block;}
     .home-btn{position:static;margin-right:.5rem;}
 
-    /* Prevent the strip from horizontal scrolling (swipe controls focus), but allow vertical overflow */
-    .strip{overflow-x:hidden;overflow-y:visible;padding-left:calc(50vw - 60px);padding-right:calc(50vw - 60px);padding-top:14px;padding-bottom:18px;}
+    /* Prevent native horizontal scrolling (swipe drives focus), but allow vertical overflow for scale */
+    .strip{
+      overflow-x:hidden;
+      overflow-y:visible;
+      padding-left:calc(50vw - 60px);
+      padding-right:calc(50vw - 60px);
+      padding-top:18px;
+      padding-bottom:22px;
+      -webkit-overflow-scrolling:touch;
+      will-change:scroll-position;
+    }
 
-    .strip-card.focused{transform:scale(1.2);box-shadow:0 10px 28px rgba(0,0,0,.22);z-index:10;}
+    /* Focused card: 25% bigger, no shadow, no cropping */
+    .strip-card.focused{
+      transform:translateZ(0) scale(1.25);
+      box-shadow:none;
+      z-index:10;
+    }
     .strip-card.focused img{object-fit:contain;background:#111;}
   }
 
@@ -147,12 +179,19 @@
 <button class="modal-x" id="modalX" onclick="closeModal()">&#x2715;</button>
 
 <script>
+// ========================
+// DATA
+// ========================
 var YEARS = [
   {
     year: 1,
     label: "Year One",
     subtitle: "Honeymooning",
-    anniversary: { src: "year1/anniversary.jpeg", title: "May 18, 2021", desc: "I have so many fond memories of this day, though it is all a bit of a blur. I do distinctly remember that you looked beautiful. I can't believe it was five years ago!" },
+    anniversary: {
+      src: "year1/anniversary.jpeg",
+      title: "May 18, 2021",
+      desc: "I have so many fond memories of this day, though it is all a bit of a blur. I do distinctly remember that you looked beautiful. I can't believe it was five years ago!"
+    },
     photos: [
       { src: "year1/01.jpeg", title: "Fancy Dinner in Sedona", desc: "Still one of the best meals I've ever had. Little did we know, this would probably be our fanciest dinner for five years." },
       { src: "year1/02.jpeg", title: "The Heart Chip", desc: "This was a fun campout (except the sliding down the mountain as we were sleeping). I remember the beautiful view and the yummy breakfast you made me." },
@@ -165,7 +204,11 @@ var YEARS = [
     year: 2,
     label: "Year Two",
     subtitle: "Becoming Parents",
-    anniversary: { src: "year2/anniversary.jpeg", title: "May 18, 2022", desc: "This is the only picture I have from this date. I'm sure we did something fun, but I'm not sure what it was." },
+    anniversary: {
+      src: "year2/anniversary.jpeg",
+      title: "May 18, 2022",
+      desc: "This is the only picture I have from this date. I'm sure we did something fun, but I'm not sure what it was."
+    },
     photos: [
       { src: "year2/01.jpeg", title: "It's a Girl!", desc: "Squirt gun gender reveal courtesy of Audra. Lets not forget who guessed correctly." },
       { src: "year2/02.jpeg", title: "Toasted Lena", desc: "At the Kartchner reunion. Everyone got burnt at the lake in Alpine. Your legs looked so bad!" },
@@ -178,7 +221,11 @@ var YEARS = [
     year: 3,
     label: "Year Three",
     subtitle: "Adulting",
-    anniversary: { src: "year3/anniversary.jpeg", title: "May 18, 2023", desc: "Good choice for anniversary dinner, Hun." },
+    anniversary: {
+      src: "year3/anniversary.jpeg",
+      title: "May 18, 2023",
+      desc: "Good choice for anniversary dinner, Hun."
+    },
     photos: [
       { src: "year3/01.jpeg", title: "Leaving for Moline", desc: "Starting off our epic car drive to Moline for my internship. Remember the Wyoming Mexican food and the massive downpour?" },
       { src: "year3/02.jpeg", title: "First Father's Day", desc: "This year was full of firsts for us." },
@@ -191,7 +238,11 @@ var YEARS = [
     year: 4,
     label: "Year Four",
     subtitle: "Moving to the Midwest",
-    anniversary: { src: "year4/anniversary.jpeg", title: "May 18, 2024", desc: "One of our last days in Provo. We took a walk to Bridal Veil Falls and Marlie picked us flowers. Little did we know how much of a trend that would be. Then, dinner at Chom." },
+    anniversary: {
+      src: "year4/anniversary.jpeg",
+      title: "May 18, 2024",
+      desc: "One of our last days in Provo. We took a walk to Bridal Veil Falls and Marlie picked us flowers. Little did we know how much of a trend that would be. Then, dinner at Chom."
+    },
     photos: [
       { src: "year4/01.jpeg", title: "Air Mattress Nights", desc: "Moving into Kimberly and not having furniture for multiple days was an adventure." },
       { src: "year4/02.jpeg", title: "Eye Rocks", desc: "You had such a fun idea to pick rocks to match each other's eyes. I think we did a pretty good job." },
@@ -204,7 +255,11 @@ var YEARS = [
     year: 5,
     label: "Year Five",
     subtitle: "Just When We Thought We Had It, Add Another",
-    anniversary: { src: "year5/anniversary.jpeg", title: "May 18, 2025", desc: "Enjoying our new baby Wes for our anniversary. This was certainly a unique one." },
+    anniversary: {
+      src: "year5/anniversary.jpeg",
+      title: "May 18, 2025",
+      desc: "Enjoying our new baby Wes for our anniversary. This was certainly a unique one."
+    },
     photos: [
       { src: "year5/01.jpeg", title: "Baby Brother", desc: "We are so lucky to have two sweet kids who love each other. What sweet times we had just cooing at Weston." },
       { src: "year5/02.jpeg", title: "Weston's Baby Blessing", desc: "Becoming a family of four." },
@@ -224,10 +279,65 @@ var slideArea = document.getElementById("slideArea");
 var modal = document.getElementById("modal");
 var modalX = document.getElementById("modalX");
 
+// ========================
+// Helpers
+// ========================
 function escAttr(s) {
-  return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+  s = String(s);
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/\"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
+// Cancelable smooth scroller (smoother feel on iOS)
+var scrollAnimId = null;
+function smoothScrollTo(el, target, dur) {
+  if (!el) return;
+  if (scrollAnimId) cancelAnimationFrame(scrollAnimId);
+
+  var start = el.scrollLeft;
+  var diff = target - start;
+  if (Math.abs(diff) < 1) return;
+
+  var t0 = null;
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function step(ts) {
+    if (!t0) t0 = ts;
+    var p = Math.min((ts - t0) / dur, 1);
+    var eased = easeOutCubic(p);
+    el.scrollLeft = start + diff * eased;
+    if (p < 1) scrollAnimId = requestAnimationFrame(step);
+    else scrollAnimId = null;
+  }
+  scrollAnimId = requestAnimationFrame(step);
+}
+
+function updateFocus() {
+  var cards = slideArea.querySelectorAll(".strip-card");
+  var strip = slideArea.querySelector(".strip");
+
+  for (var i = 0; i < cards.length; i++) cards[i].classList.remove("focused");
+
+  if (focusedIdx > 0 && focusedIdx <= cards.length) {
+    var idx = focusedIdx - 1;
+    cards[idx].classList.add("focused");
+
+    if (strip && window.innerWidth <= 600) {
+      var targetLeft = cards[idx].offsetLeft - (strip.offsetWidth / 2) + (cards[idx].offsetWidth / 2);
+      if (targetLeft < 0) targetLeft = 0;
+      smoothScrollTo(strip, targetLeft, 340);
+    }
+  } else if (strip && window.innerWidth <= 600) {
+    smoothScrollTo(strip, 0, 340);
+  }
+}
+
+// ========================
+// Render
+// ========================
 function buildNav() {
   for (var i = 0; i < YEARS.length; i++) {
     var btn = document.createElement("button");
@@ -253,42 +363,6 @@ function goHome() {
   document.getElementById("intro").classList.remove("hidden");
 }
 
-function smoothScrollTo(el, target, dur) {
-  var start = el.scrollLeft;
-  var diff = target - start;
-  if (Math.abs(diff) < 1) return;
-  var t0 = null;
-  function step(ts) {
-    if (!t0) t0 = ts;
-    var p = Math.min((ts - t0) / dur, 1);
-    var ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
-    el.scrollLeft = start + diff * ease;
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-function updateFocus() {
-  var cards = slideArea.querySelectorAll(".strip-card");
-  var strip = slideArea.querySelector(".strip");
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].classList.remove("focused");
-  }
-
-  if (focusedIdx > 0 && focusedIdx <= cards.length) {
-    var idx = focusedIdx - 1;
-    cards[idx].classList.add("focused");
-
-    if (strip && window.innerWidth <= 600) {
-      var targetLeft = cards[idx].offsetLeft - (strip.offsetWidth / 2) + (cards[idx].offsetWidth / 2);
-      if (targetLeft < 0) targetLeft = 0;
-      smoothScrollTo(strip, targetLeft, 240);
-    }
-  } else if (strip && window.innerWidth <= 600) {
-    smoothScrollTo(strip, 0, 240);
-  }
-}
-
 function render() {
   var pills = document.querySelectorAll(".yr-pill");
   for (var i = 0; i < pills.length; i++) {
@@ -301,37 +375,48 @@ function render() {
   slideArea.offsetHeight;
   slideArea.style.animation = "fadeUp .45s ease both";
 
+  // Closing slide
   if (current >= YEARS.length) {
     for (var k = 0; k < pills.length; k++) pills[k].classList.remove("active");
-    slideArea.innerHTML = '<div class="closing">' +
-      '<div class="closing-line"></div>' +
-      '<h2>I love you.<br>Looking forward to the next five, too.</h2>' +
-      '<div class="sig">&#8212; Kurtis</div></div>' +
+
+    slideArea.innerHTML =
+      '<div class="closing">' +
+        '<div class="closing-line"></div>' +
+        '<h2>I love you.<br>Looking forward to the next five, too.</h2>' +
+        '<div class="sig">&#8212; Kurtis</div>' +
+      '</div>' +
       buildNavHTML(true);
+
     attachNavEvents();
     return;
   }
 
   var yr = YEARS[current];
-  var h = '<div style="text-align:center"><div class="year-title">' + yr.label +
-    '</div><div class="year-sub">' + yr.subtitle + '</div></div>';
+
+  var h = '<div style="text-align:center">' +
+            '<div class="year-title">' + yr.label + '</div>' +
+            '<div class="year-sub">' + yr.subtitle + '</div>' +
+          '</div>';
 
   h += '<div class="hero-wrap" data-src="' + yr.anniversary.src +
-    '" data-title="' + escAttr(yr.anniversary.title) +
-    '" data-desc="' + escAttr(yr.anniversary.desc) + '">' +
-    '<img src="' + yr.anniversary.src + '" alt="' + escAttr(yr.anniversary.title) + '">' +
-    '<div class="hero-badge">' + yr.anniversary.title + '</div></div>';
+      '" data-title="' + escAttr(yr.anniversary.title) +
+      '" data-desc="' + escAttr(yr.anniversary.desc) + '">' +
+      '<img src="' + yr.anniversary.src + '" alt="' + escAttr(yr.anniversary.title) + '">' +
+      '<div class="hero-badge">' + yr.anniversary.title + '</div>' +
+    '</div>';
 
   h += '<div class="strip">';
   for (var j = 0; j < yr.photos.length; j++) {
     var p = yr.photos[j];
     h += '<div class="strip-card" data-src="' + p.src +
-      '" data-title="' + escAttr(p.title) +
-      '" data-desc="' + escAttr(p.desc) + '">' +
-      '<img src="' + p.src + '" alt="' + escAttr(p.title) + '">' +
-      '<div class="strip-num">' + (j+1) + '</div></div>';
+        '" data-title="' + escAttr(p.title) +
+        '" data-desc="' + escAttr(p.desc) + '">' +
+        '<img src="' + p.src + '" alt="' + escAttr(p.title) + '">' +
+        '<div class="strip-num">' + (j + 1) + '</div>' +
+      '</div>';
   }
   h += '</div>';
+
   h += '<div class="scroll-hint">swipe to see more &#8594;</div>';
   h += buildNavHTML(false);
 
@@ -349,7 +434,8 @@ function buildNavHTML(isLast) {
   return '<div class="slide-nav">' +
     '<button class="nav-arrow" id="prevBtn"' + (current === 0 ? " disabled" : "") + '>&#8592;</button>' +
     '<div class="nav-dots">' + dots + '</div>' +
-    '<button class="nav-arrow" id="nextBtn"' + (isLast ? " disabled" : "") + '>&#8594;</button></div>';
+    '<button class="nav-arrow" id="nextBtn"' + (isLast ? " disabled" : "") + '>&#8594;</button>' +
+  '</div>';
 }
 
 function attachNavEvents() {
@@ -368,6 +454,9 @@ function attachPhotoEvents() {
   }
 }
 
+// ========================
+// Modal
+// ========================
 function openModal(src, title, desc) {
   document.getElementById("modalImgReal").src = src;
   document.getElementById("modalTitle").textContent = title;
@@ -382,11 +471,14 @@ function closeModal(e) {
   document.body.style.overflow = "";
 }
 
+// ========================
+// Input
+// ========================
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") closeModal();
   if (modal.classList.contains("open")) return;
   if (e.key === "ArrowRight") { focusedIdx = 0; goTo(current + 1); }
-  if (e.key === "ArrowLeft") { focusedIdx = 0; goTo(current - 1); }
+  if (e.key === "ArrowLeft")  { focusedIdx = 0; goTo(current - 1); }
 });
 
 var touchStartX = 0;
@@ -398,14 +490,18 @@ document.addEventListener("touchstart", function(e) {
 
 document.addEventListener("touchend", function(e) {
   if (modal.classList.contains("open")) return;
+
   var dx = e.changedTouches[0].screenX - touchStartX;
   var dy = e.changedTouches[0].screenY - touchStartY;
   var adx = Math.abs(dx);
   var ady = Math.abs(dy);
+
+  // Only treat as horizontal swipe when it's clearly horizontal
   if (adx < 60 || ady > adx) return;
 
   var mobile = window.innerWidth <= 600;
 
+  // Mobile: swipe advances focus through photos, then years
   if (mobile && current < YEARS.length) {
     if (dx < 0) {
       if (focusedIdx < 5) { focusedIdx++; updateFocus(); }
@@ -417,11 +513,15 @@ document.addEventListener("touchend", function(e) {
   } else if (mobile && current >= YEARS.length) {
     if (dx > 0) { focusedIdx = 5; goTo(current - 1); }
   } else {
-    if (dx < -60) { focusedIdx = 0; goTo(current + 1); }
-    else if (dx > 60) { focusedIdx = 0; goTo(current - 1); }
+    // Desktop/tablet: swipe changes year
+    if (dx < 0) { focusedIdx = 0; goTo(current + 1); }
+    else { focusedIdx = 0; goTo(current - 1); }
   }
 }, { passive: true });
 
+// ========================
+// Start
+// ========================
 function enterSite() {
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("app").classList.add("visible");
